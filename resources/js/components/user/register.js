@@ -50,7 +50,9 @@ export default class Register extends Component {
                 // console.log('data token: ',res.data);
                 localStorage.setItem('accessToken', res.data.accessToken);
 
-                return this.props.history.push("/myOrder");
+                window.location.replace("/myOrder");
+
+                // return this.props.history.push("/myOrder");
 
             })
             .catch(error => {

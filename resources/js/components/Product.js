@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
+import pizza from "../pizza.png";
 
 class Product extends React.Component {
     constructor(props) {

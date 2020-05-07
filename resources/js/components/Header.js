@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import {Drawer} from "antd";
+import pizza from '../pizza.png'
 
 class Header extends Component {
     constructor(props) {
@@ -64,7 +65,8 @@ class Header extends Component {
                     <nav className="navbar" role="navigation" aria-label="main navigation">
                         <div className="navbar-brand">
 
-                            <a className="navbar-item" href="/">Pizza Pizza
+                            <a className="navbar-item" href="/">
+                                <img src={pizza} />  Pizza Pizza
                             </a>
                             {mobileHeader}
 
@@ -99,7 +101,8 @@ class Header extends Component {
                     <nav className="navbar" role="navigation" aria-label="main navigation">
                         <div className="navbar-brand">
 
-                            <a className="navbar-item" href="/">Pizza
+                            <a className="navbar-item" href="/">
+                                <img src={pizza} />
                             </a>
                             {mobileHeader}
 
