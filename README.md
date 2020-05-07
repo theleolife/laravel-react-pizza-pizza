@@ -13,5 +13,8 @@ How to
     php artisan config:clear
     
     
+    chgrp -R www-data /app/storage /app/bootstrap/cache
+    
+    
     
     
