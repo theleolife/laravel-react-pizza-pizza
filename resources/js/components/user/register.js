@@ -34,22 +34,23 @@ export default class Register extends Component {
             email: Email,
             password: Pass,
         };
-        console.log(data);
+        // console.log(data);
 
         const headers = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
         };
 
-        console.log("headers: ", headers);
+        // console.log("headers: ", headers);
 
         axios.post('/api/register/', data, {
             headers: headers
         })
             .then(res => {
-                console.log(res);
-                console.log('data token: ',res.data);
-                return this.props.history.push("/login");
+                // console.log('data token: ',res.data);
+                localStorage.setItem('accessToken', res.data.accessToken);
+
+                return this.props.history.push("/myOrder");
 
             })
             .catch(error => {

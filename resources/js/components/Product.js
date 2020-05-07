@@ -27,7 +27,7 @@ class Product extends React.Component {
                     <div className="col-sm-10">
                         <h4>{this.props.name}: ${this.props.price}</h4>
                     </div>
-                    <button className="btn btn-outline-primary"
+                    <button className="button"
                             onClick={this.add}
                     >
                         Buy
