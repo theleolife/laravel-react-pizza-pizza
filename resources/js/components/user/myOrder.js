@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import 'antd/dist/antd.css';
-import { Redirect } from 'react-router-dom'
 
 
 export default class MyOrder extends Component {
@@ -12,21 +11,13 @@ export default class MyOrder extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch('/api/myOrders')
-            .then(response => {
-                return response.json();
-            })
-            .then(order => {
-                this.setState({
-                    orders:order
-                });
-
-            });
+    async componentDidMount() {
+        const response = await fetch(`/api/myOrders`);
+        const json = await response.json();
+        this.setState({  orders:json });
     }
-    render() {
 
-        console.log('my orders: ',this.props.isLoggedIn)
+    render() {
 
         const {user, isLoggedIn} = this.props;
         const {orders} = this.state;
@@ -39,7 +30,7 @@ export default class MyOrder extends Component {
                 <tr key={i.id}>
                     <td>{i.order.orderNumber}</td>
                     <td>{i.items_order.name}</td>
-                    <td>{i.order.priceTotal}</td>
+                    <td>{i.items_order.price}</td>
                 </tr>
             )
         });

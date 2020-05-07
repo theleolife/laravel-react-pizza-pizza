@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {BrowserRouter, Link, Route,  Switch} from 'react-router-dom';
+import React, {Component} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import Login from "./components/user/login";
@@ -13,7 +13,22 @@ export default class Router extends Component {
             isLoggedIn: false,
             user: "",
         };
+        this.handleLogout = this.handleLogout.bind(this);
     }
+
+    handleLogout() {
+
+        localStorage.removeItem('accessToken');
+
+        this.setState({
+            isLoggedIn: false,
+            user: "",
+        });
+
+        this.props.history.push('/login');
+
+    }
+
 
     componentDidMount() {
 
@@ -41,15 +56,16 @@ export default class Router extends Component {
 
     render() {
 
-        console.log(this.state.isLoggedIn)
+        // console.log(this.state.isLoggedIn);
+
         return (
             <BrowserRouter>
                 <div className="App">
 
-                    <Header  render={(props)=> <Header {...props}
-                                                     isLoggedIn={this.state.isLoggedIn}
-                                                     user={this.state.user}
-                    />}/>
+                    <Header isLoggedIn={this.state.isLoggedIn}
+                            user={this.state.user}
+                            handleLogout={this.handleLogout}
+                    />
 
                     <Switch>
                         <Route exact path="/"

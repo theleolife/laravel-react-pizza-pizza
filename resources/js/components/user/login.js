@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import axios from 'axios';
 
@@ -18,8 +18,10 @@ export default class Login extends Component {
 
     }
     redirect (){
-        this.props.history.push("/myOrder");
+        window.location.replace("/myOrder");
+
     }
+
     componentDidMount() {
         if(this.props.isLoggedIn === true){
             this.redirect();
@@ -59,7 +61,7 @@ export default class Login extends Component {
             .then((res) => {
                 console.log('data send: ',res.data);
                 //remove token before to insert new one
-                localStorage.removeItem('accessToken');
+                // localStorage.removeItem('accessToken');
                 localStorage.setItem('accessToken', res.data.accessToken);
                 this.redirect();
             })

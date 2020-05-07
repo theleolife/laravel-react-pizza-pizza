@@ -13,35 +13,35 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('items')->insert(array(
             array(
-                'name' => 'Margarita',
+                'name' => 'Pizza Margarita',
                 'price' => '5',
             ),
             array(
-                'name' => 'Pepperoni',
+                'name' => 'Pizza Pepperoni',
                 'price' => '7',
             ),
             array(
-                'name' => 'Mussarela',
+                'name' => 'Pizza Mussarela',
                 'price' => '10',
             ),
             array(
-                'name' => 'Vegan',
+                'name' => 'Pizza Vegan',
                 'price' => '7',
             ),
             array(
-                'name' => 'Quattro Formaggi',
+                'name' => 'Pizza Quattro Formaggi',
                 'price' => '12',
             ),
             array(
-                'name' => 'Sweet Pizza',
+                'name' => 'Pizza Sweet Pizza',
                 'price' => '15',
             ),
             array(
-                'name' => 'Carbonara',
+                'name' => 'Pizza Carbonara',
                 'price' => '20',
             ),
             array(
-                'name' => 'Picante',
+                'name' => 'Pizza Picante',
                 'price' => '13',
             ),
             array(
