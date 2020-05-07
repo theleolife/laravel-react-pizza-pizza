@@ -50,14 +50,11 @@ class Cart extends Component{
 
         if(!this.state.done){
             return (
-                <section className="hero">
-                    <div className="hero-body">
                         <div className="container">
-                    <div className="row form-group">
-                        <div className="col-sm-10">
+                            <h3>Products:</h3>
+
                             {mapCart}
-                        </div>
-                    </div>
+
                     <Total total={this.props.total}
                            onBack={this.onBack}
                            onNext={this.onNext}
@@ -68,7 +65,7 @@ class Cart extends Component{
                            user={user}
                     />
                 </div>
-                    </div></section>
+
             )
         }else{
             return (
@@ -76,7 +73,9 @@ class Cart extends Component{
                     <div className="hero-body">
                         <div className="container"><h1>Thanks for order Pizza!</h1>
 
-                        </div></div></section>
+                        </div>
+                    </div>
+                </section>
             )
 
         }

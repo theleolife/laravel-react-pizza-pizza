@@ -12,6 +12,7 @@ export default class Details extends Component {
             postcode:'',
             city:'',
             mobile:'',
+            orderNumber:''
         };
         this.submit = this.submit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -73,7 +74,7 @@ export default class Details extends Component {
 
         return (
             <div>
-                <h1>Details checkout</h1>
+                <h3>Delivery address</h3>
 
                 <form onSubmit={this.submit}>
 
@@ -160,7 +161,7 @@ export default class Details extends Component {
 
 
                     <div className="control">
-                        <button className="button is-primary"
+                        <button className="button is-primary is-fullwidth"
                                 type="submit" value="Submit"
                         >Submit</button>
                     </div>

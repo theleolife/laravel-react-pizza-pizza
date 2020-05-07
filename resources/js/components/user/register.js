@@ -63,6 +63,8 @@ export default class Register extends Component {
 
         return (
             <div className="container">
+                <div className="columns is-mobile is-centered">
+                    <div className="column is-half">
                 <h1>Register</h1>
 
 
@@ -127,6 +129,8 @@ export default class Register extends Component {
 
                 </form>
 
+            </div>
+                </div>
             </div>
         )
     }

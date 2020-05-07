@@ -76,54 +76,60 @@ export default class Login extends Component {
         const {email, password} = this.state;
 
         return (
-            <div className="container">
-                <h1>Login</h1>
+                    <div className="container">
+                        <div className="columns is-mobile is-centered">
+                            <div className="column is-half">
+                                <h1>Login</h1>
 
-                <form onSubmit={this.submit}>
+                                <form onSubmit={this.submit}>
 
-                    <div className="field">
-                        <label className="label is-small">Email</label>
-                        <div className="control has-icons-left has-icons-right">
-                            <input className="input is-small"
-                                   name="email"
-                                   placeholder="email"
-                                   value={email}
-                                   onChange={this.handleInputChange}
-                            />
-                            <span className="icon is-small is-left">
+                                    <div className="field">
+                                        <label className="label is-small">Email</label>
+                                        <div className="control has-icons-left has-icons-right">
+                                            <input className="input is-small"
+                                                   name="email"
+                                                   placeholder="email"
+                                                   value={email}
+                                                   onChange={this.handleInputChange}
+                                            />
+                                            <span className="icon is-small is-left">
                             </span>
-                            <span className="icon is-small is-right">
+                                            <span className="icon is-small is-right">
                               <i className="fas fa-check"></i>
                             </span>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className="label is-small">Password</label>
-                        <div className="control has-icons-left has-icons-right">
-                            <input className="input is-small"
-                                   placeholder="password"
-                                   name="password"
-                                   value={password}
-                                   onChange={this.handleInputChange}
-                            />
-                            <span className="icon is-small is-left">
+                                        </div>
+                                    </div>
+                                    <div className="field">
+                                        <label className="label is-small">Password</label>
+                                        <div className="control has-icons-left has-icons-right">
+                                            <input className="input is-small"
+                                                   placeholder="password"
+                                                   name="password"
+                                                   value={password}
+                                                   onChange={this.handleInputChange}
+                                            />
+                                            <span className="icon is-small is-left">
                             </span>
-                            <span className="icon is-small is-right">
+                                            <span className="icon is-small is-right">
                               <i className="fas fa-check"></i>
                             </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="control">
+                                        <button className="button is-primary"
+                                                type="submit" value="Submit"
+                                        >GO</button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
+
                     </div>
 
 
-                    <div className="control">
-                        <button className="button is-primary"
-                                type="submit" value="Submit"
-                        >GO</button>
-                    </div>
-
-                </form>
-
-            </div>
         )
     }
 }

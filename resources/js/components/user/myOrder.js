@@ -15,6 +15,10 @@ export default class MyOrder extends Component {
         const response = await fetch(`/api/myOrders`);
         const json = await response.json();
         this.setState({  orders:json });
+
+        if(this.props.isLoggedIn){
+            this.props.isLoggedIn;
+        }
     }
 
     render() {
@@ -22,7 +26,7 @@ export default class MyOrder extends Component {
         const {user, isLoggedIn} = this.props;
         const {orders} = this.state;
 
-        const findBy = orders.filter((i) => i.order.user_id === user.id);
+        const findBy = orders.filter((i) => i.order.user_id === user.id );
         // console.log(findBy);
 
          const listOrders = findBy.map(i => {
@@ -37,12 +41,12 @@ export default class MyOrder extends Component {
 
          if(this.props.isLoggedIn === true){
              return (
-                 <section className="hero">
-                     <div className="hero-body">
-                         <div className="container">
+                 <div className="container">
+                         <div className="column">
 
                              <h2>My Details</h2>
                              <p>name: {user.name}</p>
+                             <p>email: {user.email}</p>
                              <br/>
                              <h2>My Orders</h2>
 
@@ -62,14 +66,12 @@ export default class MyOrder extends Component {
                              </table>
                          </div>
                      </div>
-                 </section>
              );
          } else {
 
              return (
-                 <section className="hero">
-                     <div className="hero-body">
-                         <div className="container">
+                 <div className="container">
+                     <div className="columns">
 
                              <h2>Login or register :)</h2>
 
@@ -78,9 +80,8 @@ export default class MyOrder extends Component {
 
                                      <a href="/register" className="button is-light" >Register</a>
                            </div>
-                         </div>
                      </div>
-                 </section>
+                 </div>
              );
          }
 

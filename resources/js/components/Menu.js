@@ -109,7 +109,7 @@ class Menu extends React.Component {
             );
         });
 
-
+        const isMobile = true;
         return (
             <section className="hero">
                 <div className="hero-body">
@@ -120,7 +120,7 @@ class Menu extends React.Component {
                     closable={true}
                     onClose={this.onClose}
                     visible={this.state.visible}
-                    width={650}
+                    width={isMobile ? "100%" : "50%"}
                 >
 
                     <Cart

@@ -38,7 +38,7 @@ class Total extends React.Component {
         let totalIncTax = (+total + + delivery).toFixed(2);
 
         const onChange = e => {
-            console.log('radio checked', e.target.value);
+            // console.log('radio checked', e.target.value);
             this.setState({
                 value: e.target.value,
             });
@@ -57,11 +57,12 @@ class Total extends React.Component {
             return (
                 <div className="container">
                     <Radio.Group>
-                        <p style={{fontWeight: 400}}>Delivery:</p>
+                        <h3>Delivery cost</h3>
                         {deliveryOption}
                     </Radio.Group>
 
-                    <div style={{"marginTop": "30px", "backgroundColor": "#F6F6F6", "padding": "10px"}}>
+                    <div style={{"marginTop": "20px", "backgroundColor": "#fafafa", "padding": "10px"}}>
+                        <h3>Total</h3>
                         <div className="row" style={{fontWeight: 400}}>
                             <span className="col-6">total price:</span>
                             <span className="col-6 text-right">${total}</span>
@@ -75,7 +76,7 @@ class Total extends React.Component {
                             <span className="col-6 text-right">${totalIncTax}</span>
                         </div>
                     </div>
-
+                    <br/>
                     <Details
                         onDone={this.okay}
                         total={this.props.total}

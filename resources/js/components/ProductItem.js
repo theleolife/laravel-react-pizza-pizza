@@ -59,7 +59,7 @@ class ProductItem extends React.Component {
             >
                 <div className="row form-group">
                     <div className="col-sm-10">
-                        <tex>{this.props.name}: ${this.props.price}     -      qty: {this.state.quantity}
+                        <text>{this.props.name}: ${this.props.price}     -      qty: {this.state.quantity}
 
                             <button className="btn is-small is-text"
                                     onClick={this.more}
@@ -72,7 +72,7 @@ class ProductItem extends React.Component {
                             >
                                 -
                             </button>
-                        </tex>
+                        </text>
 
 
                     </div>
