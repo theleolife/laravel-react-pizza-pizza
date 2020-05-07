@@ -105,6 +105,7 @@ export default class Login extends Component {
                                             <input className="input is-small"
                                                    placeholder="password"
                                                    name="password"
+                                                   type="password"
                                                    value={password}
                                                    onChange={this.handleInputChange}
                                             />
