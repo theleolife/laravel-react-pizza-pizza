@@ -42,8 +42,6 @@ export default class MyOrder extends Component {
          if(this.props.isLoggedIn === true){
              return (
                  <div className="container">
-                     <div className="columns is-mobile is-centered">
-                         <div className="column is-half">
 
                              <h2>My Details</h2>
                              <p>name: {user.name}</p>
@@ -65,27 +63,20 @@ export default class MyOrder extends Component {
 
                                  </tbody>
                              </table>
-                         </div>
-                     </div>
                  </div>
              );
          } else {
 
              return (
                  <div className="container">
-                     <div className="columns is-mobile is-centered">
-                         <div className="column is-half">
 
-                             <h2>Login or register :)</h2>
+                             <h2>Login or Register an account</h2>
 
                              <div className="buttons">
                                  <a href="/login" className="button is-light" >Login</a>
-
-                                     <a href="/register" className="button is-light" >Register</a>
+                                 <a href="/register" className="button is-light" >Register</a>
                            </div>
                      </div>
-                 </div>
-                 </div>
              );
          }
 

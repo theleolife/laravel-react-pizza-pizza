@@ -46,7 +46,7 @@ export default class Login extends Component {
             email: email,
             password: password,
         };
-        console.log(data);
+        // console.log(data);
 
         const headers = {
             method: 'POST',
@@ -63,7 +63,12 @@ export default class Login extends Component {
                 //remove token before to insert new one
                 // localStorage.removeItem('accessToken');
                 localStorage.setItem('accessToken', res.data.accessToken);
-                this.redirect();
+                if(localStorage.getItem('accessToken') === null | undefined | ""){
+                    return alert("Error login! try again...")
+                }else{
+                    this.redirect();
+                }
+
             })
             .catch(error => {
                 console.log(error.message);
