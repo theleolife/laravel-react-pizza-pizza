@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8aa4f54e-62a2-4379-afdc-0e2141c43ab3" name="Default Changelist" comment="">
+    <list default="true" id="8aa4f54e-62a2-4379-afdc-0e2141c43ab3" name="Default Changelist" comment="Git fixes app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/user/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/user/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/user/myOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/user/myOrder.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,10 +72,7 @@
         <entry file="file://$PROJECT_DIR$/resources/js/components/user/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -90,9 +82,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1017">
               <caret line="64" column="62" lean-forward="true" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -102,9 +91,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
               <caret line="120" column="61" selection-start-line="120" selection-start-column="61" selection-end-line="120" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -133,10 +119,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/user/myOrder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+            <state relative-caret-position="164">
+              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -480,12 +466,20 @@
       <option name="presentableId" value="Default" />
       <updated>1587432687172</updated>
       <workItem from="1587432688561" duration="136513000" />
-      <workItem from="1587958932860" duration="216244000" />
+      <workItem from="1587958932860" duration="216637000" />
     </task>
+    <task id="LOCAL-00001" summary="Git fixes app">
+      <created>1588827979738</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588827979738</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352757000" />
+    <option name="totallyTimeSpent" value="353150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -494,11 +488,11 @@
       <window_info id="Learn" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.33476394" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.33476394" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49928468" visible="true" weight="0.26270136" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49928468" visible="true" weight="0.4361834" />
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5007153" side_tool="true" weight="0.19950433" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -524,7 +518,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Git add all backend + react front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Git add all backend + react front" />
+    <MESSAGE value="Git fixes app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Git fixes app" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -872,9 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="120" column="61" selection-start-line="120" selection-start-column="61" selection-end-line="120" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,10 +883,7 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/user/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
@@ -912,9 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1017">
           <caret line="64" column="62" lean-forward="true" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,10 +916,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/user/myOrder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        <state relative-caret-position="164">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
