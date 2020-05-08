@@ -13,12 +13,6 @@ export default class Login extends Component {
         };
         this.submit = this.submit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.redirect = this.redirect.bind(this);
-
-
-    }
-    redirect (){
-        window.location.replace("/myOrder");
 
     }
 
@@ -42,29 +36,30 @@ export default class Login extends Component {
 
         const {email, password} = this.state;
 
-        const data = {
+        const data = JSON.stringify({
             email: email,
             password: password,
+        });
+        const requestOptions = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: data
         };
-        // console.log(data);
 
-        axios.post('/api/login/', data)
-             .then(res => {
-                localStorage.removeItem('accessToken');
+        fetch("/api/login", requestOptions)
+            .then(res => res.json())
+            .then(res => {
+                let data = res;
+                // console.log('data token: ',data);
+                localStorage.setItem('accessToken', data.accessToken);
 
-                console.log('data token: ',res.data);
-                if(res.status === 200){
-                    localStorage.setItem('accessToken', res.data.accessToken);
+                window.location.replace("/myOrder");
 
-                    // window.location.replace("/");
-                    console.log('token and redirect')
-                }
-                // return this.props.history.push("/myOrder");
             })
-            .catch(error => {
-                console.log(error.message);
-                // alert(error.message )
-            })
+            .catch(error => console.log('error', error));
     }
 
     render() {

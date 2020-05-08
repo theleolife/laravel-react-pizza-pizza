@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import axios from 'axios';
 
 export default class Register extends Component {
 
@@ -29,26 +28,33 @@ export default class Register extends Component {
 
         const {Email, Name, Pass} = this.state;
 
-        const data = {
+        const data = JSON.stringify({
             name: Name,
             email: Email,
             password: Pass,
+        });
+
+        const requestOptions = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: data
         };
 
-        axios.post('/api/register/', data)
+        fetch("/api/register", requestOptions)
+            .then(res => res.json())
             .then(res => {
-                console.log('data token: ',res.data);
-                if(res.status === 200){
-                    localStorage.setItem('accessToken', res.data.accessToken);
+                let data = res;
+                // console.log('data token: ',data);
+                localStorage.setItem('accessToken', data.accessToken);
 
-                    // window.location.replace("/myOrder");
-                    console.log('token and redirect')
-                }
-                // return this.props.history.push("/myOrder");
+                window.location.replace("/myOrder");
+
             })
-            .catch(error => {
-                console.log(error.message);
-            })
+            .catch(error => console.log('error', error));
+
     }
 
     render() {
