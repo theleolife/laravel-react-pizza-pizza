@@ -6,6 +6,7 @@ How to
     php artisan migrate &&
     php artisan db:seed &&
     php artisan passport:install     
+    composer dumb-autoload
     
     heroku config:set APP_DEBUG=true   -a  pizza-order-react-laravel
     heroku config:set APP_KEY=$(php artisan --no-ansi key:generate --show) -a app name

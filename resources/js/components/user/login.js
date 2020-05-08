@@ -48,24 +48,15 @@ export default class Login extends Component {
         };
         // console.log(data);
 
-        const headers = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        };
-
-        // console.log("headers: ", headers);
-
-        axios.post('/api/login/', data, {
-            headers: headers
-        })
-            .then(res => {
+        axios.post('/api/login/', data)
+             .then(res => {
                 localStorage.removeItem('accessToken');
 
                 console.log('data token: ',res.data);
                 if(res.status === 200){
                     localStorage.setItem('accessToken', res.data.accessToken);
 
-                    window.location.replace("/myOrder");
+                    // window.location.replace("/");
                     console.log('token and redirect')
                 }
                 // return this.props.history.push("/myOrder");

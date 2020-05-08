@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::apiResource('orders', 'orderController');
-Route::get('myOrders', 'orderController@cart');
+Route::apiResource('/orders', 'orderController');
+Route::get('/myOrders', 'orderController@cart');
 
-Route::apiResource('delivery', 'deliveryController');
-Route::apiResource('items', 'itemsController');
+Route::apiResource('/delivery', 'deliveryController');
+Route::apiResource('/items', 'itemsController');
 
 //Register
-Route::post('register', 'authController@register');
+Route::post('/register', 'authController@register');
 //Login
-Route::post('login', 'authController@login');
+Route::post('/login', 'authController@login');
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('user', 'UserController@user');
+    Route::post('/user', 'UserController@user');
 });
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

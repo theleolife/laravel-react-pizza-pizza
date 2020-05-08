@@ -50,16 +50,9 @@ export default class Details extends Component {
             qtd: ''
         };
 
-        const headers = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        };
-
-        axios.post('/api/orders/', data, {
-            headers: headers
-            })
-            .then(res => {
-                // console.log('data send: ',res.data);
+        axios.post('/api/orders/', data)
+             .then(res => {
+                console.log('data send: ',res.data);
                 if (res.status === 201) {
                     this.props.onDone(true)
                 }

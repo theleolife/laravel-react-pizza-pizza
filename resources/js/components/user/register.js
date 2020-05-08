@@ -34,24 +34,14 @@ export default class Register extends Component {
             email: Email,
             password: Pass,
         };
-        // console.log(data);
 
-        const headers = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        };
-
-        // console.log("headers: ", headers);
-
-        axios.post('/api/register/', data, {
-            headers: headers
-        })
+        axios.post('/api/register/', data)
             .then(res => {
                 console.log('data token: ',res.data);
                 if(res.status === 200){
                     localStorage.setItem('accessToken', res.data.accessToken);
 
-                    window.location.replace("/myOrder");
+                    // window.location.replace("/myOrder");
                     console.log('token and redirect')
                 }
                 // return this.props.history.push("/myOrder");
