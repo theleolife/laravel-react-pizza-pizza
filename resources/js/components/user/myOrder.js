@@ -34,7 +34,7 @@ export default class MyOrder extends Component {
                 <tr key={i.id}>
                     <td>{i.order.orderNumber}</td>
                     <td>{i.items_order.name}</td>
-                    <td>{i.items_order.price}</td>
+                    <td>{i.order.priceTotal}</td>
                 </tr>
             )
         });

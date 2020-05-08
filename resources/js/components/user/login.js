@@ -53,22 +53,22 @@ export default class Login extends Component {
             headers: { 'Content-Type': 'application/json' },
         };
 
-        console.log("headers: ", headers);
+        // console.log("headers: ", headers);
 
         axios.post('/api/login/', data, {
             headers: headers
         })
-            .then((res) => {
-                console.log('data send: ',res.data);
-                //remove token before to insert new one
+            .then(res => {
                 localStorage.removeItem('accessToken');
-            })
-            .then((response) => {
-                console.log('data send: ',response.data);
-                //remove token before to insert new one
-                // localStorage.removeItem('accessToken');
-                localStorage.setItem('accessToken', response.data.accessToken);
-                this.redirect();
+
+                console.log('data token: ',res.data);
+                if(res.status === 200){
+                    localStorage.setItem('accessToken', res.data.accessToken);
+
+                    window.location.replace("/myOrder");
+                    console.log('token and redirect')
+                }
+                // return this.props.history.push("/myOrder");
             })
             .catch(error => {
                 console.log(error.message);
