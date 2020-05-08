@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import axios from 'axios';
 
 export default class Details extends Component {
 
@@ -30,13 +29,13 @@ export default class Details extends Component {
     submit (e) {
         e.preventDefault();
 
-        const { user } = this.props
+        const { user, cart } = this.props
 
         const {Name, address, postcode, city, mobile} = this.state;
 
-        const itemsCart = this.props.cart.toString();
+        const itemsCart = cart.toString();
 
-        const data = {
+        const data = JSON.stringify({
             user_id: user.id,
             name: Name,
             address: address,
@@ -48,18 +47,27 @@ export default class Details extends Component {
             priceTotal: this.props.total,
             items: itemsCart,
             qtd: ''
+        });
+
+        const requestOptions = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: data
         };
 
-        axios.post('/api/orders/', data)
-             .then(res => {
-                console.log('data send: ',res.data);
-                if (res.status === 201) {
-                    this.props.onDone(true)
-                }
+        fetch("/api/orders", requestOptions)
+            .then(res => res.json())
+            .then(res => {
+                let data = res;
+                console.log('data send: ', data);
+
+                this.props.onDone(true);
+
             })
-            .catch(error => {
-            console.log(error.message);
-        })
+            .catch(error => console.log('error', error));
     }
 
     render() {
