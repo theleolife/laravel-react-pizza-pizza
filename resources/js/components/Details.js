@@ -6,6 +6,7 @@ export default class Details extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email:'',
             Name:'',
             address:'',
             postcode:'',
@@ -31,13 +32,14 @@ export default class Details extends Component {
 
         const { user, cart } = this.props
 
-        const {Name, address, postcode, city, mobile} = this.state;
+        const {Name, address, postcode, city, mobile, email} = this.state;
 
         const itemsCart = cart.toString();
 
         const data = JSON.stringify({
             user_id: user.id,
             name: Name,
+            email: email,
             address: address,
             postCode: postcode,
             city: city,
@@ -71,13 +73,14 @@ export default class Details extends Component {
     }
 
     render() {
-        const {Name, address, postcode, city, mobile} = this.state;
+        const {Name, address, postcode, city, mobile, email} = this.state;
 
         return (
             <div>
                 <h3>Delivery address</h3>
 
                 <form onSubmit={this.submit}>
+
 
                     <div className="field">
                         <label className="label is-small">Name</label>
@@ -93,6 +96,18 @@ export default class Details extends Component {
                                 <span className="icon is-small is-right">
                               <i className="fas fa-check"></i>
                             </span>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label className="label is-small">Email</label>
+                        <div className="control">
+                            <input className="input is-small"
+                                   name="email"
+                                   type="email"
+                                   placeholder="Email"
+                                   value={email}
+                                   onChange={this.handleInputChange}
+                            />
                         </div>
                     </div>
                     <div className="field">

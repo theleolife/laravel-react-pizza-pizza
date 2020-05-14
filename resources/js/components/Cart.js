@@ -71,9 +71,7 @@ class Cart extends Component{
             return (
                 <section className="hero">
                     <div className="hero-body">
-                        <div className="container"><h1>Thanks for order Pizza!</h1>
-
-                        </div>
+                        <h1>Thanks for order Pizza!</h1>
                     </div>
                 </section>
             )

@@ -101,19 +101,25 @@ export default class Login extends Component {
                                                    onChange={this.handleInputChange}
                                             />
                                             <span className="icon is-small is-left">
-                            </span>
-                                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                                            </span>
+                                                            <span className="icon is-small is-right">
+                                              <i className="fas fa-check"></i>
+                                            </span>
                                         </div>
+                                        <a href="/register"  className="is-link">
+                                            Register an account
+                                        </a>
                                     </div>
 
 
                                     <div className="control">
-                                        <button className="button is-primary"
+                                        <button className="button is-primary is-fullwidth"
                                                 type="submit" value="Submit"
-                                        >GO</button>
+                                        >Login</button>
+
                                     </div>
+
+
 
                                 </form>
                             </div>

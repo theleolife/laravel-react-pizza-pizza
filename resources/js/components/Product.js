@@ -8,33 +8,38 @@ class Product extends React.Component {
     }
 
     add () {
-        const {addToCart, handleTotal, id, price} = this.props;
+        const {addToCart, handleTotal, id, price, visible} = this.props;
         handleTotal(+price);
 
         //add to ids to cart
         addToCart(id);
-
-        this.setState({
-            visible:true
-        });
+        visible(true)
     }
 
     render() {
+        const { price, description, img, name, visible} = this.props;
+
+        console.log('product cart:', visible);
 
         return (
-            <div className="container">
-                <div className="row form-group">
-                    <div className="col-sm-10">
-                        <h4>{this.props.name}: ${this.props.price}</h4>
+            <div className="column is-3">
+                <div className="card is-hovered">
+                    <div className="card-image ">
+                        <figure className="image is-4by3">
+                            <img src={img} alt={name} />
+                        </figure>
                     </div>
-                    <button className="button"
-                            onClick={this.add}
-                    >
-                        Buy
-                    </button>
+                    <div className="card-content">
+                        <div className="content">
+                            <h4>{name} </h4>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                    <footer className="card-footer">
+                        <a href="#" className="card-footer-item">${price}</a>
+                        <a href="#" className="card-footer-item" onClick={this.add}>Buy</a>
+                    </footer>
                 </div>
-                <hr />
-
             </div>
         );
     }

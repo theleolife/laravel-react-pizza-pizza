@@ -10,7 +10,7 @@ class Items extends Model
 //    protected $guarded = [];
 
     protected $fillable = [
-        'name', 'price'
+        'name', 'description', 'url-img', 'category', 'price',
     ];
 
 }

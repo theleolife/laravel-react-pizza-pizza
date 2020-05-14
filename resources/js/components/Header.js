@@ -8,22 +8,25 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            visible:false,
+            open:false,
         };
+        this.openNav = this.openNav.bind(this);
         this.onOpen = this.onOpen.bind(this);
         this.onClose = this.onClose.bind(this);
         this.logout = this.logout.bind(this);
-
     }
 
     onOpen () {
-        this.setState({
-            visible: true,
-        });
+        this.props.openCart(true)
     };
+    openNav () {
+        this.setState({
+            navMobile: true,
+        });
+    }
     onClose () {
         this.setState({
-            visible: false,
+            navMobile: false,
         });
     };
 
@@ -39,7 +42,7 @@ class Header extends Component {
                 placement="left"
                 closable={true}
                 onClose={this.onClose}
-                visible={this.state.visible}
+                visible={this.state.navMobile}
                 width={250}
             >
 
@@ -69,15 +72,23 @@ class Header extends Component {
                                 <img src={pizza} />  Pizza Pizza
                             </a>
                             {mobileHeader}
-
-                            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                               data-target="navbarBasicExample"
-                               onClick={this.onOpen}>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                            </a>
                         </div>
+                        <a className="navbar-burger"
+                           onClick={this.onOpen}
+                        >
+                                                    <span className="icon">
+                                                      <i className="fas fa-shopping-cart"></i>
+                                                    </span>
+                        </a>
+
+                        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                           data-target="navbarBasicExample"
+                           onClick={this.openNav}>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+
 
                         <div id="navbarBasicExample" className="navbar-menu">
                             <div className="navbar-start">
@@ -86,8 +97,19 @@ class Header extends Component {
                             <div className="navbar-end">
                                 <div className="navbar-item">
                                     <div className="buttons">
-                                        <a href="/login" className="button is-light" >Login</a>
-                                        <a href="/register" className="button is-light" >Register</a>
+                                        <a className="button is-light" onClick={this.onOpen} >
+                                            <span className="icon">
+                                              <i className="fas fa-shopping-cart"></i>
+                                            </span>
+                                            <span>Cart</span>
+                                        </a>
+
+                                        <a href="/myOrder"  className="button is-light">
+                                            <span className="icon">
+                                              <i className="fas fa-user-circle"></i>
+                                            </span>
+                                            <span>Account</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -105,10 +127,17 @@ class Header extends Component {
                                 <img src={pizza} />
                             </a>
                             {mobileHeader}
+                            <a className="navbar-burger"
+                               onClick={this.onOpen}
+                            >
+                                                    <span className="icon">
+                                                      <i className="fas fa-shopping-cart"></i>
+                                                    </span>
+                            </a>
 
                             <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
                                data-target="navbarBasicExample"
-                               onClick={this.onOpen}>
+                               onClick={this.openNav}>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
@@ -122,6 +151,12 @@ class Header extends Component {
                             <div className="navbar-end">
                                 <div className="navbar-item">
                                     <div className="buttons">
+                                        <a className="button is-light" onClick={this.onOpen} >
+                                            <span className="icon">
+                                              <i className="fas fa-shopping-cart"></i>
+                                            </span>
+                                            <span>My Cart</span>
+                                        </a>
                                         <a href="/myOrder" className="button is-light" >My Orders</a>
                                         <a  className="button is-light" onClick={this.logout} >Logout</a>
 

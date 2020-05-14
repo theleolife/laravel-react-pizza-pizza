@@ -12,8 +12,17 @@ export default class Router extends Component {
         this.state = {
             isLoggedIn: false,
             user: "",
+            visible:false
         };
         this.handleLogout = this.handleLogout.bind(this);
+        this.openCart = this.openCart.bind(this);
+
+    }
+
+    openCart (e){
+        this.setState({
+            visible: e
+        })
     }
 
     handleLogout() {
@@ -56,15 +65,17 @@ export default class Router extends Component {
 
     render() {
 
-        // console.log(this.state.isLoggedIn);
+        console.log('visible: ', this.state.visible);
 
         return (
+
             <BrowserRouter>
                 <div className="App">
 
-                    <Header isLoggedIn={this.state.isLoggedIn}
-                            user={this.state.user}
-                            handleLogout={this.handleLogout}
+                    <Header  isLoggedIn={this.state.isLoggedIn}
+                             handleLogout={this.handleLogout}
+                             user={this.state.user}
+                             openCart={this.openCart}
                     />
 
                     <Switch>
@@ -72,6 +83,10 @@ export default class Router extends Component {
                                render={(props)=> <Menu {...props}
                                                         isLoggedIn={this.state.isLoggedIn}
                                                         user={this.state.user}
+                                                       visible={this.state.visible}
+                                                       openCart={this.openCart}
+
+
                                />}
 
                         />

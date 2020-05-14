@@ -14,7 +14,7 @@ class Menu extends React.Component {
             total: 0,
             productList: "",
             cart:[],
-            visible: false,
+            // visible: false,
             qty:[]
         };
 
@@ -26,14 +26,23 @@ class Menu extends React.Component {
     }
 
     onOpen () {
-        this.setState({
-            visible: true,
-        });
+        const {openCart} = this.props;
+
+        if(openCart === false){
+            this.props.openCart(true)
+        } else {
+            this.props.openCart(false)
+        }
+        // this.setState({
+        //     visible: true,
+        // });
     };
     onClose () {
-        this.setState({
-            visible: false,
-        });
+        // this.setState({
+        //     visible: false,
+        // });
+        this.props.openCart(false)
+
     };
 
     componentDidMount() {
@@ -69,24 +78,22 @@ class Menu extends React.Component {
         };
 
         let ids = idsCart.reduce(countDuplicates, {});
-
         let uniqueIds = Object.keys(ids);
         let itemCartIds = uniqueIds.map(Number);
 
         // // let json = JSON.stringify(uniqueIds);
         // console.log('teste Unique: ', itemCartIds);
 
-
+        this.props.openCart(true);
         this.setState({
                 cart:itemCartIds,
-                visible:true
+                // visible:true
             });
     }
 
 
 
     render() {
-
         const { user } = this.props
 
         if (!this.state.productList) return <p>Loading...!!!!</p>;
@@ -97,6 +104,9 @@ class Menu extends React.Component {
                 <Product
                     key={product.id}
                     name={product.name}
+                    img={product.img}
+                    description={product.description}
+                    category={product.category}
                     price={product.price}
                     id={product.id}
                     handleTotal={component.calculateTotal}
@@ -110,34 +120,39 @@ class Menu extends React.Component {
         });
 
         const isMobile = true;
+
         return (
-            <section className="hero">
+            <section className="hero is-light is-fullheight">
                 <div className="hero-body">
                     <div className="container">
-            <Drawer
+
+                <Drawer
                     title="Checkout cart"
                     placement="right"
                     closable={true}
-                    onClose={this.onClose}
-                    visible={this.state.visible}
-                    width={isMobile ? "100%" : "50%"}
+                    onClose={this.onOpen}
+                    visible={this.props.visible}
+                    width={isMobile ? "50%" : "50%"}
                 >
 
                     <Cart
-                            setQty={this.setQty}
-                            qty={this.state.qty}
-                            handleTotal={this.calculateTotal}
-                            cart={this.state.cart}
-                            total={this.state.total}
-                            productList={this.state.productList}
-                            user={user}
+                        setQty={this.setQty}
+                        qty={this.state.qty}
+                        handleTotal={this.calculateTotal}
+                        cart={this.state.cart}
+                        total={this.state.total}
+                        productList={this.state.productList}
+                        user={user}
 
 
                     />
                 </Drawer>
-                {products}
-            </div>
-                </div></section>
+                <div className="row columns">
+                    {products}
+                </div>
+                </div>
+                </div>
+            </section>
         );
     }
 }

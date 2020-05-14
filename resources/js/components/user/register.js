@@ -54,7 +54,6 @@ export default class Register extends Component {
 
             })
             .catch(error => console.log('error', error));
-
     }
 
     render() {
@@ -122,10 +121,13 @@ export default class Register extends Component {
 
 
                     <div className="control">
-                        <button className="button is-primary"
+                        <button className="button is-primary is-fullwidth"
                                 type="submit" value="Submit"
-                        >GO</button>
+                        >Register</button>
                     </div>
+                    <a href="/register"  className="is-link">
+                        or Login
+                    </a>
 
                 </form>
 

@@ -14,7 +14,7 @@ How to deploy heroku
     php artisan db:seed &&
     php artisan passport:install     
     php artisan config:clear 
-    composer dumb-autoload
+    composer dump-auto
    
 3 - may you need to setup new laravel APP_KEY
 

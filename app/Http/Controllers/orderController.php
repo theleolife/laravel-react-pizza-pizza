@@ -47,6 +47,7 @@ class orderController extends Controller
              'orderNumber'      =>  'NUMBER-'.strtoupper(uniqid()),
              'user_id'           =>  $request['user_id'],
              'name'              =>  $request->input('name'),
+             'email'                =>  $request->input('email'),
              'address'           =>  $request->input('address'),
              'city'              =>  $request->input('city'),
              'country'           =>  $request->input('country'),
