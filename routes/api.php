@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/orders', 'orderController');
 Route::get('/myOrders', 'orderController@cart');
+Route::get('/order/', 'orderController@order');
+
 
 Route::apiResource('/delivery', 'deliveryController');
 Route::apiResource('/items', 'itemsController');

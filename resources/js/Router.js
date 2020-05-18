@@ -65,8 +65,6 @@ export default class Router extends Component {
 
     render() {
 
-        console.log('visible: ', this.state.visible);
-
         return (
 
             <BrowserRouter>

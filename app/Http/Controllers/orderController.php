@@ -3,51 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Delivery;
 use App\Models\Items;
 use App\Models\Menu;
 use App\Orders;
-use App\User;
 use Illuminate\Http\Request;
 
 class orderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
         return Orders::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
 
        $createOrder  = Orders::create([
-             'orderNumber'      =>  'NUMBER-'.strtoupper(uniqid()),
+             'orderNumber'       =>  'NUMBER-'.strtoupper(uniqid()),
              'user_id'           =>  $request['user_id'],
              'name'              =>  $request->input('name'),
-             'email'                =>  $request->input('email'),
+             'email'             =>  $request->input('email'),
              'address'           =>  $request->input('address'),
              'city'              =>  $request->input('city'),
              'country'           =>  $request->input('country'),
@@ -89,20 +66,19 @@ class orderController extends Controller
 
     public function show($id)
     {
-        //
-        return Orders::findOrFail($id);
-
+        $order = Orders::findOrFail($id);
+        return response()->json($order, 200);
     }
 
     public function cart()
     {
-
-        $cart = Cart::with('itemsOrder','Order')->get();
-
+        $cart = Cart::with('itemsOrder', 'Order')->get();
         return response()->json($cart, 200);
-//        return Cart::with(itemsOrder)->get();
-
     }
 
-
+    public function order()
+    {
+        $carts = Orders::with('cartItems.itemsOrder')->get();
+        return response()->json($carts, 200);
+    }
 }

@@ -69,7 +69,8 @@ class Header extends Component {
                         <div className="navbar-brand">
 
                             <a className="navbar-item" href="/">
-                                <img src={pizza} />  Pizza Pizza
+                                <img src={pizza} />
+                                <span>Pizza Pizza</span>
                             </a>
                             {mobileHeader}
                         </div>
@@ -125,6 +126,8 @@ class Header extends Component {
 
                             <a className="navbar-item" href="/">
                                 <img src={pizza} />
+                                <span>Pizza Pizza</span>
+
                             </a>
                             {mobileHeader}
                             <a className="navbar-burger"

@@ -50,6 +50,13 @@ export default class Login extends Component {
         };
 
         fetch("/api/login", requestOptions)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                    console.error('Invalid Form status 500')
+                }
+                return response;
+            })
             .then(res => res.json())
             .then(res => {
                 let data = res;

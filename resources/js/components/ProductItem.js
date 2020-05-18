@@ -30,19 +30,22 @@ class ProductItem extends React.Component {
 
     }
 
-
     less () {
         const {handleTotal, price, setQty} = this.props;
 
         handleTotal( - price);
         setQty(this.state.qtdID);
 
-
         this.setState({
             quantity: this.state.quantity - 1,
         });
-
     }
+
+    // removeItem () {
+    //     const {id} = this.props;
+    //
+    //        this.state.quantity.splice(this.state.quantity.indexOf(id), 1);
+    // }
 
 
     render() {
@@ -59,7 +62,7 @@ class ProductItem extends React.Component {
             >
                 <div className="row form-group">
                     <div className="col-sm-10">
-                        <text>{this.props.name}: ${this.props.price}     -      qty: {this.state.quantity}
+                        <p>{this.props.name}: ${this.props.price}     -      qty: {this.state.quantity}
 
                             <button className="btn is-small is-text"
                                     onClick={this.more}
@@ -72,9 +75,7 @@ class ProductItem extends React.Component {
                             >
                                 -
                             </button>
-                        </text>
-
-
+                        </p>
                     </div>
 
                 </div>

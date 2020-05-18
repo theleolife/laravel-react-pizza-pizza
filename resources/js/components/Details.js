@@ -1,5 +1,20 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css';
+
+const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach(
+        (val) => val.length > 0 && (valid = false)
+    );
+    return valid;
+}
+const countErrors = (errors) => {
+    let count = 0;
+    Object.values(errors).forEach(
+        (val) => val.length > 0 && (count = count+1)
+    );
+    return count;
+}
 
 export default class Details extends Component {
 
@@ -12,23 +27,79 @@ export default class Details extends Component {
             postcode:'',
             city:'',
             mobile:'',
-            orderNumber:''
+            orderNumber:'',
+            formValid: false,
+            errorCount: null,
+            errors: {
+                email:'',
+                Name:'',
+                address:'',
+                postcode:'',
+                city:'',
+                mobile:'',
+            }
         };
         this.submit = this.submit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this)
     }
 
     handleInputChange(e){
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
-        this.setState({
-            [name]: value
-        });
+
+        e.preventDefault();
+        const { name, value } = event.target;
+
+
+        let errors = this.state.errors;
+
+        switch (name) {
+            case 'Name':
+                errors.Name =
+                    value.length < 5
+                        ? 'Full Name must be 5 characters long!'
+                        : '';
+                break;
+            case 'email':
+                errors.email =
+                    validEmailRegex.test(value)
+                        ? ''
+                        : 'Email is not valid!';
+                break;
+            case 'address':
+                errors.address =
+                    value.length < 5
+                        ? 'Address is required!'
+                        : '';
+                break;
+            case 'postcode':
+                errors.postcode =
+                    value.length < 5
+                        ? 'Postcode is required!'
+                        : '';
+                break;
+            case 'city':
+                errors.city =
+                    value.length < 5
+                        ? 'City is required!'
+                        : '';
+                break;
+            case 'mobile':
+                errors.mobile =
+                    value.length < 5
+                        ? 'Mobile number is required!'
+                        : '';
+                break;
+            default:
+                break;
+        }
+
+        this.setState({errors, [name]: value});
     }
 
     submit (e) {
         e.preventDefault();
+
+        this.setState({formValid: validateForm(this.state.errors)});
+        this.setState({errorCount: countErrors(this.state.errors)});
 
         const { user, cart } = this.props
 
@@ -59,27 +130,41 @@ export default class Details extends Component {
             },
             body: data
         };
+        if(validateForm(this.state.errors)) {
+            // console.info('Valid Form')
+            fetch("/api/orders", requestOptions)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                        console.error('Invalid Form status 500')
+                    }
+                    return response;
+                })
+                .then(res => res.json())
+                .then((response) => {
+                    console.log("ok");
+                    this.props.onDone(true);
 
-        fetch("/api/orders", requestOptions)
-            .then(res => res.json())
-            .then(res => {
-                let data = res;
-                console.log('data send: ', data);
+                })
+                .catch(error => console.log('error', error));
+        }else{
+            console.error('Invalid Form')
+        }
 
-                this.props.onDone(true);
 
-            })
-            .catch(error => console.log('error', error));
     }
 
     render() {
         const {Name, address, postcode, city, mobile, email} = this.state;
 
+        const {errors, formValid} = this.state;
+
+
         return (
             <div>
-                <h3>Delivery address</h3>
+                <h4>Delivery address</h4>
 
-                <form onSubmit={this.submit}>
+                <form onSubmit={this.submit} noValidate>
 
 
                     <div className="field">
@@ -90,12 +175,10 @@ export default class Details extends Component {
                                    placeholder="Name"
                                    value={Name}
                                    onChange={this.handleInputChange}
+                                   noValidate
                             />
-                            <span className="icon is-small is-left">
-                            </span>
-                                <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                            {errors.Name.length > 0 &&
+                            <p class="help is-danger">{errors.Name}</p>}
                         </div>
                     </div>
                     <div className="field">
@@ -107,7 +190,10 @@ export default class Details extends Component {
                                    placeholder="Email"
                                    value={email}
                                    onChange={this.handleInputChange}
+                                   noValidate
                             />
+                            {errors.email.length > 0 &&
+                            <p className="help is-danger">{errors.email}</p>}
                         </div>
                     </div>
                     <div className="field">
@@ -118,12 +204,10 @@ export default class Details extends Component {
                                    name="address"
                                    value={address}
                                    onChange={this.handleInputChange}
+                                   noValidate
                             />
-                            <span className="icon is-small is-left">
-                            </span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                            {errors.address.length > 0 &&
+                            <p className="help is-danger">{errors.address}</p>}
                         </div>
                     </div>
                     <div className="field">
@@ -134,12 +218,10 @@ export default class Details extends Component {
                                    placeholder="City"
                                    value={city}
                                    onChange={this.handleInputChange}
+                                   noValidate
                             />
-                            <span className="icon is-small is-left">
-                            </span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                            {errors.city.length > 0 &&
+                            <p className="help is-danger">{errors.city}</p>}
                         </div>
                     </div>
                     <div className="field">
@@ -149,13 +231,11 @@ export default class Details extends Component {
                                    placeholder="PostCode"
                                    name="postcode"
                                    value={postcode}
+                                   type="number"
                                    onChange={this.handleInputChange}
                             />
-                            <span className="icon is-small is-left">
-                            </span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                            {errors.postcode.length > 0 &&
+                            <p className="help is-danger">{errors.postcode}</p>}
                         </div>
                     </div>
                     <div className="field">
@@ -165,23 +245,20 @@ export default class Details extends Component {
                                    name="mobile"
                                    placeholder="Mobile number"
                                    value={mobile}
+                                   type="number"
                                    onChange={this.handleInputChange}
+                                   noValidate
                             />
-                            <span className="icon is-small is-left"></span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
+                            {errors.mobile.length > 0 &&
+                            <p className="help is-danger">{errors.mobile}</p>}
                         </div>
                     </div>
-
-
 
                     <div className="control">
                         <button className="button is-primary is-fullwidth"
                                 type="submit" value="Submit"
                         >Submit</button>
                     </div>
-
                 </form>
 
             </div>

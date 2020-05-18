@@ -14,7 +14,6 @@ class Menu extends React.Component {
             total: 0,
             productList: "",
             cart:[],
-            // visible: false,
             qty:[]
         };
 
@@ -33,16 +32,9 @@ class Menu extends React.Component {
         } else {
             this.props.openCart(false)
         }
-        // this.setState({
-        //     visible: true,
-        // });
     };
     onClose () {
-        // this.setState({
-        //     visible: false,
-        // });
         this.props.openCart(false)
-
     };
 
     componentDidMount() {
@@ -82,21 +74,19 @@ class Menu extends React.Component {
         let itemCartIds = uniqueIds.map(Number);
 
         // // let json = JSON.stringify(uniqueIds);
-        // console.log('teste Unique: ', itemCartIds);
 
         this.props.openCart(true);
         this.setState({
                 cart:itemCartIds,
-                // visible:true
-            });
+            }, function () {
+        });
     }
 
-
-
     render() {
-        const { user } = this.props
 
-        if (!this.state.productList) return <p>Loading...!!!!</p>;
+        const { user } = this.props;
+
+        if (!this.state.productList) return <p>Loading...</p>;
 
         const component = this;
         const products = this.state.productList.map(function(product) {
@@ -132,7 +122,7 @@ class Menu extends React.Component {
                     closable={true}
                     onClose={this.onOpen}
                     visible={this.props.visible}
-                    width={isMobile ? "50%" : "50%"}
+                    width={isMobile ? "70%" : "70%"}
                 >
 
                     <Cart

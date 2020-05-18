@@ -8,18 +8,15 @@ class Product extends React.Component {
     }
 
     add () {
-        const {addToCart, handleTotal, id, price, visible} = this.props;
+        const {addToCart, handleTotal, id, price} = this.props;
         handleTotal(+price);
 
-        //add to ids to cart
         addToCart(id);
-        visible(true)
+        // visible(true);
     }
 
     render() {
-        const { price, description, img, name, visible} = this.props;
-
-        console.log('product cart:', visible);
+        const { price, description, img, name} = this.props;
 
         return (
             <div className="column is-3">

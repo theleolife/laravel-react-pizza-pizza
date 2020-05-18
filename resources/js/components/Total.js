@@ -46,6 +46,7 @@ class Total extends React.Component {
         const deliveryOption = this.state.costDelivery.map((cost) => {
             return (
                 <Radio onChange={onChange}
+                       defaultChecked="1"
                        value={cost.cost}
                        key={cost.id}
                 >
@@ -57,7 +58,7 @@ class Total extends React.Component {
             return (
                 <div className="container">
                     <Radio.Group>
-                        <h3>Delivery cost</h3>
+                       <h4>Delivery cost</h4>
                         {deliveryOption}
                     </Radio.Group>
 

@@ -20,7 +20,7 @@ class Cart extends Component{
 
         if(this.state.done === true){
             setTimeout(() => {
-                   return this.props.history.push("/myOrder");
+                   return this.props.history.push("/myOrders");
             }, 2000);
         }
     }
@@ -36,6 +36,7 @@ class Cart extends Component{
                             .map((i) => {
                                 return (
                                     <ProductItem
+                                        cart={this.props.cart}
                                         key={i.id}
                                         name={i.name}
                                         price={i.price}
@@ -47,11 +48,16 @@ class Cart extends Component{
                                 )
                             }
             );
+        if (this.props.cart.length === 0){
+            return (
+                <div className="container"> <h1>Emptv Cart :/</h1></div>
+            )
+        }
 
         if(!this.state.done){
             return (
                         <div className="container">
-                            <h3>Products:</h3>
+                            <h4>Products:</h4>
 
                             {mapCart}
 
