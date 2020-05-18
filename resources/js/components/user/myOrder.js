@@ -108,7 +108,6 @@ export default class MyOrder extends Component {
                                  <span>Or </span>
                                  <br/>
                                  <a href="/register" className="button is-light" >Register</a>
-                                 <a href="/register" className="button is-light" >Register</a>
                            </div>
                      </div>
                      </div>

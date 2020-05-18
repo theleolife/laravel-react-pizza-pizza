@@ -20,7 +20,7 @@ class Cart extends Component{
 
         if(this.state.done === true){
             setTimeout(() => {
-                   return this.props.history.push("/myOrders");
+                   return this.props.history.push("/myOrder");
             }, 2000);
         }
     }
